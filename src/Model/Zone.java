@@ -7,18 +7,21 @@ public class Zone extends Observable {
     private NiveauEau niveauEau = NiveauEau.Normale;
     private Element element; // null par défaut
     private Cle cle;
+    private int x, y;
 
-    public Zone(Modele modele) {
-        this(modele, null);
+    public Zone(Modele modele, int x, int y) {
+        this(modele, null, x, y);
     }
 
-    public Zone(Modele modele, Element element) {
-        this(modele, element, null);
+    public Zone(Modele modele, Element element, int x, int y) {
+        this(modele, element, null, x, y);
     }
 
-    public Zone (Modele modele, Element element, Cle cle) {
+    public Zone (Modele modele, Element element, Cle cle, int x, int y) {
         this.element = element;
         this.cle = cle;
+        this.x = x;
+        this.y = y;
     }
     
     

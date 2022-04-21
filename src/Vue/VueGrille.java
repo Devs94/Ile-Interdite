@@ -17,6 +17,7 @@ public class VueGrille extends JPanel implements Observer {
         Dimension dim = new Dimension(
             TAILLE*Modele.LARGEUR, TAILLE*Modele.LARGEUR
         );
+        this.setPreferredSize(dim);
     }
 
     public void update() {

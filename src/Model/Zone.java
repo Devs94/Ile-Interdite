@@ -23,6 +23,10 @@ public class Zone extends Observable {
         this.x = x;
         this.y = y;
     }
+
+    public NiveauEau getNiveauEau() {
+        return this.niveauEau;
+    }
     
     
 

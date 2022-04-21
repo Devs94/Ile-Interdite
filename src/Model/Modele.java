@@ -2,14 +2,14 @@ package Model;
 import Observing.Observable;
 
 public class Modele extends Observable {
-    private static final int LONGUEUR = 4, LARGEUR = 4;
+    public static final int LARGEUR = 4, HAUTEUR = 4;
     private Zone[][] zones;
     private Ile ile;
 
     public Modele() {
-        zones = new Zone[LONGUEUR][LARGEUR];
-        for (int i = 0; i < LONGUEUR; i++) {
-            for (int j = 0; j < LARGEUR; j++) {
+        zones = new Zone[LARGEUR][HAUTEUR];
+        for (int i = 0; i < LARGEUR; i++) {
+            for (int j = 0; j < HAUTEUR; j++) {
                 zones[i][j] = new Zone(this, i, j);
             }
         }

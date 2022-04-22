@@ -4,9 +4,10 @@ import Observing.Observable;
 import outils.*;
 
 public class Zone extends Observable {
-    private NiveauEau niveauEau = NiveauEau.Normale;
+    private NiveauEau niveauEau;
     private Element element; // null par défaut
-    private Cle cle;
+    private boolean Heliport;
+    private Element cle;
     private int x, y;
 
     public Zone(Modele modele, int x, int y) {
@@ -17,7 +18,7 @@ public class Zone extends Observable {
         this(modele, element, null, x, y);
     }
 
-    public Zone (Modele modele, Element element, Cle cle, int x, int y) {
+    public Zone (Modele modele, Element element, Element cle, int x, int y) {
         this.element = element;
         this.cle = cle;
         this.x = x;
@@ -28,6 +29,26 @@ public class Zone extends Observable {
         return this.niveauEau;
     }
     
+    public void zoneType(NiveauEau a){
+        niveauEau = a;
+    }
+
+    public boolean contientArtef(){
+        return element != null;
+    }
+
+    public void addArtefact(Element element){
+        this.element = element;
+    }
+
+    public void addCle(Element element){
+        this.cle = element;
+    }
+
+    public void heliZone(){
+        Heliport = true;
+    }
+
     
 
     @Override

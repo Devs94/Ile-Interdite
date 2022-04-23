@@ -32,8 +32,8 @@ public class Modele extends Observable {
     }
     
     public void init(){
-        int nBArt = 4;
-        int nBKey = 4;
+        int nBArt = 3;
+        int nBKey = 3;
         ArrayList<Element> Type = new ArrayList<Element>(Arrays.asList(Element.values()));
         zones[0][0].heliZone();
         

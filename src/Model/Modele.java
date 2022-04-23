@@ -50,7 +50,7 @@ public class Modele extends Observable {
                     }
                     if( c <= 0.5 & nBKey > 0){
                         if(zones[i][j].contientArtef() == false){
-                            zones[i][j].addCle(Type.get(nBKey)));
+                            zones[i][j].addCle(Type.get(nBKey));
                             nBKey--;
                         }
                     }
@@ -63,7 +63,7 @@ public class Modele extends Observable {
                     }
                     if( c <= 0.4 & nBKey > 0){
                         if(zones[i][j].contientArtef() == false){
-                            zones[i][j].addCle(Type.get(nBKey)));
+                            zones[i][j].addCle(Type.get(nBKey));
                             nBKey--;
                 }
                 else {

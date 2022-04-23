@@ -6,9 +6,9 @@ import outils.*;
 public class Zone extends Observable {
     private NiveauEau niveauEau;
     private Element element; // null par défaut
-    private boolean Heliport;
+    private boolean Heliport = false;
     private Element cle;
-    private int x, y;
+    public int x, y;
 
     public Zone(Modele modele, int x, int y) {
         this(modele, null, x, y);
@@ -24,6 +24,12 @@ public class Zone extends Observable {
         this.x = x;
         this.y = y;
     }
+
+    public Zone(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
 
     public NiveauEau getNiveauEau() {
         return this.niveauEau;
@@ -49,7 +55,15 @@ public class Zone extends Observable {
         Heliport = true;
     }
 
+    public boolean caseSafe(){
+        if(NiveauEau.Inondee == niveauEau){
+            return false;
+        } return true;
+    }
+
+
     
+
 
     @Override
     public String toString() {

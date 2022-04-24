@@ -1,13 +1,16 @@
 package Model;
 
+import java.awt.Color;
 import Model.Ile;
 import Model.Zone;
 import outils.Direction;
 
 public class Joueur {
     private Modele modele;
+    private int id;
     private Zone position;
     private Direction direction;
+    private Color couleur;
 
 
     public Joueur(Modele modele, Zone zone){

@@ -86,25 +86,27 @@ public void  EndtourInondation(){
 
      int nBInond = 3;
      Random rand = new Random();
-     int upperbound = LARGEUR + 1;
+     int upperbound = LARGEUR;
 
     while ( nBInond > 0){
         int randW = rand.nextInt(upperbound);
         int randH = rand.nextInt(upperbound);
 
-        if(zones[randW][randH].caseSafe()){
-            if(zones[randW][randH].getNiveauEau() == NiveauEau.Normale){
+        if (zones[randW][randH].caseSafe()) {
+            if (zones[randW][randH].caseSafe()) {
                 zones[randW][randH].modifNiveauEeau(NiveauEau.Inondee);
-            }
-            else{
+            } else {
                 zones[randW][randH].modifNiveauEeau(NiveauEau.Submergee);
             }
             nBInond--;
         }
-
     }
-
     notifyObservers();
+    for (int i = 0; i < zones.length; i++) {
+        for (int j = 0; j < zones[0].length; j++) {
+            zones[i][j].notifyObservers();
+        }
+    }
 }
 
 

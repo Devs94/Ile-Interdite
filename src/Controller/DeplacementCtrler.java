@@ -7,12 +7,12 @@ import Model.Joueur;
 import Model.Modele;
 import outils.Direction;
 
-public class JoueurCtrler implements ActionListener {
+public class DeplacementCtrler implements ActionListener {
     private Modele modele;
     private Joueur joueur;
     private Direction direction;
 
-    public JoueurCtrler(Modele modele, Joueur joueur, Direction direction) {
+    public DeplacementCtrler(Modele modele, Joueur joueur, Direction direction) {
         this.modele = modele;
         this.joueur = joueur;
         this.direction = direction;

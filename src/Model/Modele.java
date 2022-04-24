@@ -9,7 +9,7 @@ import outils.NiveauEau;
 import java.util.Random;
 
 public class Modele extends Observable {
-    public static final int LARGEUR = 7, HAUTEUR = 7;
+    public static final int LARGEUR = 3, HAUTEUR = 3;
     public static final int NbArtCle = 4;
     private Zone[][] zones;
     private Ile ile;

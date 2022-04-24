@@ -85,9 +85,9 @@ public class VueZone extends JPanel implements Observer {
 
     private void afficheJoueur(Graphics g, Color color, int x, int y) {
         // On dessine la tête => cercle
-        int tailleTete = this.getWidth()/20;
+        int taille = this.getWidth()/10;
         g.setColor(color);
-        g.fillOval(x, y, x+tailleTete, y+tailleTete);
+        g.fillOval(x, y, x+taille, y+taille);
     }
 
     private void afficheAllArtef(Graphics g) {

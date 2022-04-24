@@ -13,6 +13,7 @@ public class Joueur {
     private Direction direction;
     private ArrayList<Element> ListeArtefact;
     private ArrayList<Element> ListeClés;
+   
  
 
 
@@ -20,6 +21,7 @@ public class Joueur {
         
         this.x = zone.x;
         this.y = zone.y;
+       
     }
 
     public Direction getDirection(){
@@ -52,6 +54,13 @@ public class Joueur {
 
     public ArrayList<Element> getKeyTab(){
         return this.ListeClés;
+    }
+
+    public int nBArtefact(){
+        int compteur = 0;
+        for(int i = 0; i < ListeArtefact.size();i++){
+            compteur++;
+        } return compteur;
     }
 
 

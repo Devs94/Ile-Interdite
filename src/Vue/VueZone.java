@@ -11,6 +11,7 @@ import outils.NiveauEau;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import outils.Element;
 
 public class VueZone extends JPanel implements Observer {
     public static final Color EAU = new Color(84,121,255);

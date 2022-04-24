@@ -3,12 +3,14 @@ package Vue;
 import java.awt.*;
 import javax.swing.JPanel;
 
+import Model.Joueur;
 import Model.Modele;
 import Model.Zone;
 import Observing.Observer;
 import outils.NiveauEau;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 public class VueZone extends JPanel implements Observer {
     public static final Color EAU = new Color(84,121,255);
@@ -20,7 +22,7 @@ public class VueZone extends JPanel implements Observer {
         this.y = y;
         this.modele = modele;
         modele.getZone(x, y).addObserver(this);
-        setBackground(Color.RED);
+        setBackground(Color.BLACK);
     }
 
     public void repaint() {
@@ -39,6 +41,9 @@ public class VueZone extends JPanel implements Observer {
                 break;
         }
         if (modele.getZone(x, y).isHeliZone()) afficheHeliZone(g);
+        afficheAllArtef(g);
+        afficheJoueurs(g, Color.YELLOW);
+        // afficheArtef(g, Color.MAGENTA,this.getWidth()/2+10, this.getHeight()/2+10);
         // afficheJoueur(g, Color.GREEN);
     }
 
@@ -66,6 +71,13 @@ public class VueZone extends JPanel implements Observer {
         g.drawLine(0, taille, taille, taille);
     }
 
+    private void afficheJoueurs(Graphics g, Color color) {
+        ArrayList<Joueur> listeJ =  modele.getZone(x, y).listeJoueurs;
+        for (int i = 0; i < listeJ.size(); i++) {
+                afficheJoueur(g, color, getWidth()/10*i, 0);
+        }
+    } 
+
     private void afficheJoueur(Graphics g, Color color) {
         afficheJoueur(g, color, 10, 10);
     }
@@ -77,7 +89,46 @@ public class VueZone extends JPanel implements Observer {
         g.fillOval(x, y, x+tailleTete, y+tailleTete);
     }
 
-    
+    private void afficheAllArtef(Graphics g) {
+        if (modele.getZone(x, y).contientArtef()) {
+            switch (modele.getZone(x, y).getArtef()) {
+                case Air:
+                    afficheArtef(
+                        g, new Color(133, 247, 232),
+                        this.getWidth()/2+10,
+                        this.getHeight()/2+10
+                    );
+                    break;
+                case Terre:
+                    afficheArtef(
+                    g, new Color(198, 151, 93),
+                    this.getWidth()/2-10,
+                    this.getHeight()/2-10
+                );
+                    break;
+                case Eau:
+                    afficheArtef(
+                    g, new Color(62, 80, 221),
+                    this.getWidth()/2+10,
+                    this.getHeight()/2-10
+                );
+                    break;
+                case Feu:
+                    afficheArtef(
+                    g, new Color(247, 86, 12),
+                    this.getWidth()/2-10,
+                    this.getHeight()/2+10
+                );
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void afficheArtef(Graphics g, Color c, int x, int y) {
+        g.setColor(c);
+        g.fillRect(x, y, this.getWidth()/10, this.getWidth()/10);
+    }
 
     public void update() {
         super.repaint();

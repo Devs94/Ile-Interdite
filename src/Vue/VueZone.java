@@ -36,6 +36,7 @@ public class VueZone extends JPanel implements Observer {
                 break;
         }
         if (this.zone.isHeliZone()) afficheHeliZone(g);
+        // afficheJoueur(g, Color.GREEN);
     }
 
     private void afficheInondee(Graphics g) {
@@ -60,6 +61,17 @@ public class VueZone extends JPanel implements Observer {
         g.drawLine(taille, 0, 0, taille);
         g.drawLine(taille, 0, taille, taille);
         g.drawLine(0, taille, taille, taille);
+    }
+
+    private void afficheJoueur(Graphics g, Color color) {
+        afficheJoueur(g, color, 10, 10);
+    }
+
+    private void afficheJoueur(Graphics g, Color color, int x, int y) {
+        // On dessine la tête => cercle
+        int tailleTete = this.getWidth()/20;
+        g.setColor(color);
+        g.fillOval(x, y, x+tailleTete, y+tailleTete);
     }
 
     

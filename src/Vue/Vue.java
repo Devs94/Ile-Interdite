@@ -13,6 +13,7 @@ public class Vue implements Observer {
     private Modele modele;
     private JFrame frame;
     private VueZone[][] zones;
+    private VueCommandes commandes;
 
     public Vue(Modele modele) {
         this.modele = modele;
@@ -25,6 +26,8 @@ public class Vue implements Observer {
         JPanel panel = new JPanel();
         panel.setBorder(new EmptyBorder(50, 50, 50, 50));
         panel.add(panGrille);
+        commandes = new VueCommandes(modele);
+        panel.add(commandes);
         frame.setContentPane(panel);
         frame.setPreferredSize(new Dimension(800,600));
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));

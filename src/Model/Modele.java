@@ -13,6 +13,8 @@ public class Modele extends Observable {
     public static final int NbArtCle = 4;
     private Zone[][] zones;
     private Ile ile;
+    private Joueur[] ListeJoueurs;
+ 
 
     public Modele() {
         zones = new Zone[LARGEUR][HAUTEUR];

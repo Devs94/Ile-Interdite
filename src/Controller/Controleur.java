@@ -1,7 +1,7 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import javax.swing.*;
 
 import Model.Modele;
 
@@ -14,11 +14,19 @@ public class Controleur implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
 
-        modele.EndtourInondation();       
+        modele.EndtourInondation();   
         
         
+        
+        String actionCommand = ((JButton) e.getSource()).getActionCommand();
+		boolean actionValide = false;
 
-
+        if( actionCommand == "Gagnée?" ){
+            modele.PartieGagnee();
+        }
+        else if ( actionCommand == "Récupérer"){
+            modele.RecupArtefact(modele.tourget(), modele.getGrilleZones());
+        }
 
     }
     

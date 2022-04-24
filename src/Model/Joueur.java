@@ -7,15 +7,15 @@ import outils.Direction;
 
 public class Joueur {
     private Modele modele;
-    private int id;
-    private Zone position;
+    public int x,y;
     private Direction direction;
-    private Color couleur;
+ 
 
 
-    public Joueur(Modele modele, Zone zone){
-        this.modele = modele;
-        this.position = zone;
+    public Joueur( Zone zone){
+        
+        this.x = zone.x;
+        this.y = zone.y;
     }
 
     public Direction getDirection(){
@@ -25,20 +25,19 @@ public class Joueur {
     public void move(Direction key){
         this.direction = key;
         switch(this.direction){
-            case down: this.position = new Zone(this.position.x, this.position.y -1);
+            case down: this.y = y - 1;
                 break;
-            case up: this.position = new Zone(this.position.x, this.position.y + 1);
+            case up: this.y = y + 1;
                 break;
-            case left: this.position = new Zone(this.position.x - 1, this.position.y);
+            case left:this.x = x - 1;
                 break;
-            case right: this.position = new Zone(this.position.x + 1, this.position.y);
+            case right: this.x = x + 1;
                 break;
             default:
                 break;
         }
     }
     
-
 
 
 

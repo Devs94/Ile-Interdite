@@ -1,14 +1,17 @@
 package Model;
 
+import java.util.ArrayList;
+
 import Observing.Observable;
 import outils.*;
 
 public class Zone extends Observable {
-    private NiveauEau niveauEau = NiveauEau.Inondee;
+    private NiveauEau niveauEau = NiveauEau.Normale;
     private Element element; // null par défaut
     private boolean Heliport = false;
     private Element cle;
     public int x, y;
+    public ArrayList<Joueur> listeJoueurs;
 
     public Zone(Modele modele, int x, int y) {
         this(modele, null, x, y);

@@ -48,7 +48,7 @@ public class VueZone extends JPanel implements Observer {
 
     private void afficheSubmergee(Graphics g) {
         g.setColor(EAU);
-        int rectWidth = this.getWidth()-20, rectHeight = this.getHeight()-20;
+        int rectWidth = this.getWidth()-10, rectHeight = this.getHeight()-10;
         g.fillRect((this.getWidth()-rectWidth)/2, (this.getHeight()-rectHeight)/2, rectWidth, rectHeight);
     }
 

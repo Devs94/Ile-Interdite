@@ -30,7 +30,7 @@ public class Vue implements Observer {
         panel.add(commandes);
         frame.setContentPane(panel);
         frame.setPreferredSize(new Dimension(800,600));
-        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

@@ -6,6 +6,8 @@ import Observing.Observable;
 import outils.Element;
 import outils.NiveauEau;
 
+import java.util.Random;
+
 public class Modele extends Observable {
     public static final int LARGEUR = 3, HAUTEUR = 3;
     public static final int NbArtCle = 4;
@@ -44,11 +46,11 @@ public class Modele extends Observable {
                 double c = Math.random();
                 if (a < 0.4){
                     zones[i][j].zoneType(NiveauEau.Normale);
-                    if( b <= 0.3 & nBArt > 0 ){
+                    if( b <= 0.3 & nBArt >= 0 ){
                         zones[i][j].addArtefact(Type.get(nBArt));
                         nBArt--;
                     }
-                    if( c <= 0.5 & nBKey > 0){
+                    if( c <= 0.5 & nBKey >= 0){
                         if(zones[i][j].contientArtef() == false){
                             zones[i][j].addCle(Type.get(nBKey));
                             nBKey--;
@@ -57,11 +59,11 @@ public class Modele extends Observable {
                 }
                 else if (a <= 0.5 & a < 0.8 ){
                     zones[i][j].zoneType(NiveauEau.Inondee);
-                    if( b < 0.3 & nBArt > 0){
+                    if( b < 0.3 & nBArt >= 0){
                           zones[i][j].addArtefact(Type.get(nBArt));
                         nBArt--;
                     }
-                    if( c <= 0.4 & nBKey > 0){
+                    if( c <= 0.4 & nBKey >= 0){
                         if(zones[i][j].contientArtef() == false){
                             zones[i][j].addCle(Type.get(nBKey));
                             nBKey--;
@@ -75,5 +77,37 @@ public class Modele extends Observable {
 
     }
 }
+
+
+
+public void  EndtourInondation(){
+
+     int nBInond = 3;
+     Random rand = new Random();
+     int upperbound = LARGEUR + 1;
+
+    while ( nBInond > 0){
+        int randW = rand.nextInt(upperbound);
+        int randH = rand.nextInt(upperbound);
+
+        if(zones[randW][randH].caseSafe()){
+            if(zones[randW][randH].getNiveauEau() == NiveauEau.Normale){
+                zones[randW][randH].modifNiveauEeau(NiveauEau.Inondee);
+            }
+            else{
+                zones[randW][randH].modifNiveauEeau(NiveauEau.Submergee);
+            }
+            nBInond--;
+        }
+
+    }
+
+    notifyObservers();
+}
+
+
+
+
+
 }
 

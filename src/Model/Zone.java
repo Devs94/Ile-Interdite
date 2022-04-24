@@ -56,11 +56,14 @@ public class Zone extends Observable {
     }
 
     public boolean caseSafe(){
-        if(NiveauEau.Inondee == niveauEau){
+        if(NiveauEau.Submergee == niveauEau){
             return false;
         } return true;
     }
 
+    public void modifNiveauEeau( NiveauEau a){
+        this.niveauEau = a;
+    }
 
     
 

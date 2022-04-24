@@ -91,7 +91,7 @@ public class VueZone extends JPanel implements Observer {
 
     private void afficheAllArtef(Graphics g) {
         if (modele.getZone(x, y).contientArtef()) {
-            switch (modele.getZone(x, y).getArtef()) {
+            switch (modele.getZone(x, y).getArtefact()) {
                 case Air:
                     afficheArtef(
                         g, new Color(133, 247, 232),

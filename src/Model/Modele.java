@@ -152,9 +152,12 @@ public void DeplaceJoueur( Joueur perso, Zone[][] carte, Direction direct){
     }
     for(int i = 0; i < carte.length; i++){
         for(int j = 0; j < carte.length; j++){
-            if (zones[i][j].x == perso.x & zones[i][j].y == perso.y){
-                zones[coor1][coor2].listeJoueurs.remove(perso);
-                zones[i][j].listeJoueurs.add(perso);
+            if(zones[i][j].getNiveauEau() != NiveauEau.Submergee){
+            
+                if (zones[i][j].x == perso.x & zones[i][j].y == perso.y){
+                    zones[coor1][coor2].listeJoueurs.remove(perso);
+                    zones[i][j].listeJoueurs.add(perso);
+            }
             }
         }
     }

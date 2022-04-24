@@ -63,16 +63,23 @@ public class Zone extends Observable {
     }
 
     public boolean caseSafe(){
-        if(NiveauEau.Submergee == niveauEau){
-            return false;
-        } return true;
+        if(NiveauEau.Normale == niveauEau){
+         return true;
+    }
+    return false;
+    }
+    
+    public boolean caseInond(){
+        if(NiveauEau.Inondee == niveauEau){
+            return true;
+        }
+        return false;
     }
 
     public void modifNiveauEeau( NiveauEau a){
         this.niveauEau = a;
     }
 
-    
 
 
     @Override

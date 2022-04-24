@@ -1,14 +1,17 @@
 package Model;
 
 import java.awt.Color;
+import java.util.ArrayList;
+
 import Model.Ile;
 import Model.Zone;
-import outils.Direction;
+import outils.*;
 
 public class Joueur {
     private Modele modele;
     public int x,y;
     private Direction direction;
+    private ArrayList<Element> ListeArtefact;
  
 
 
@@ -38,12 +41,9 @@ public class Joueur {
         }
     }
     
-
-
-
-
-
-
+    public void AjoutArtefact(Element Artefact){
+        this.ListeArtefact.add(Artefact);
+    }
 
 
 

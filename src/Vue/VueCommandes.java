@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 import Model.Modele;
+import outils.Direction;
+import Controller.ActionCtrler;
 import Controller.Controleur;
-import Controller.JoueurCtrler;
+import Controller.DeplacementCtrler;
 
 
 
@@ -50,6 +52,13 @@ class VueCommandes extends JPanel{
 
         Controleur ctrl2 = new Controleur(modele);
         boutonAvance2.addActionListener(ctrl2);
+
+        haut.addActionListener(new DeplacementCtrler(modele, modele.tourget(), Direction.up));
+        bas.addActionListener(new DeplacementCtrler(modele, modele.tourget(), Direction.down));
+        droite.addActionListener(new DeplacementCtrler(modele, modele.tourget(), Direction.right));
+        gauche.addActionListener(new DeplacementCtrler(modele, modele.tourget(), Direction.left));
+
+        
 
     }
 }

@@ -49,8 +49,9 @@ public class Modele extends Observable {
         }
         zones[0][0].heliZone();
         
-        for(int i = 1; i < LARGEUR; i++){
+        for(int i = 0; i < LARGEUR; i++){
             for(int j = 0; j < HAUTEUR; j++){
+                if(i > 0 || j > 0){ 
                 double a = Math.random();
                 double b = Math.random();
                 double c = Math.random();
@@ -84,10 +85,12 @@ public class Modele extends Observable {
                     zones[i][j].zoneType(NiveauEau.Submergee);
                 }
                 }
+            }
+            }
             
         }
 
-    }
+    
 
 
 

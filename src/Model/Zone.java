@@ -4,7 +4,7 @@ import Observing.Observable;
 import outils.*;
 
 public class Zone extends Observable {
-    private NiveauEau niveauEau = NiveauEau.Inondee;
+    private NiveauEau niveauEau;
     private Element element; // null par défaut
     private boolean Heliport = false;
     private Element cle;

@@ -38,4 +38,16 @@ public class ModeleTest {
         }
         System.out.printf("%d, %d, %d sur %d au total", sec, inond, sub, zones.length*zones[0].length);
     }
+
+    @Test
+    public void compteArtefacts() {
+        int compte = 0;
+        Zone[][] zones = mTest.getGrilleZones();
+        for (int i = 0; i < zones.length; i++) {
+            for (int j = 0; j < zones[0].length; j++) {
+                if (zones[i][j].contientArtef()) compte++;
+            }
+        }
+        assertEquals(compte, 4);
+    }
 }

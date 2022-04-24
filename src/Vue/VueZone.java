@@ -12,11 +12,14 @@ import java.awt.Color;
 
 public class VueZone extends JPanel implements Observer {
     public static final Color EAU = new Color(84,121,255);
-    private Zone zone;
+    private Modele modele;
+    private int x, y;
 
     public VueZone(Modele modele, int x, int y) {
-        this.zone = modele.getZone(x, y);
-        this.zone.addObserver(this);
+        this.x = x;
+        this.y = y;
+        this.modele = modele;
+        modele.getZone(x, y).addObserver(this);
         setBackground(Color.RED);
     }
 
@@ -26,7 +29,7 @@ public class VueZone extends JPanel implements Observer {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        switch (this.zone.getNiveauEau()) {
+        switch (modele.getZone(x, y).getNiveauEau()) {
             case Inondee:
                 afficheInondee(g);
                 break;
@@ -35,7 +38,7 @@ public class VueZone extends JPanel implements Observer {
             default:
                 break;
         }
-        if (this.zone.isHeliZone()) afficheHeliZone(g);
+        if (modele.getZone(x, y).isHeliZone()) afficheHeliZone(g);
         // afficheJoueur(g, Color.GREEN);
     }
 

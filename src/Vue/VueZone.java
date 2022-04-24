@@ -35,6 +35,7 @@ public class VueZone extends JPanel implements Observer {
             default:
                 break;
         }
+        if (this.zone.isHeliZone()) afficheHeliZone(g);
     }
 
     public void afficheInondee(Graphics g) {
@@ -49,6 +50,17 @@ public class VueZone extends JPanel implements Observer {
         int rectWidth = this.getWidth()-20, rectHeight = this.getHeight()-20;
         g.fillRect((this.getWidth()-rectWidth)/2, (this.getHeight()-rectHeight)/2, rectWidth, rectHeight);
     }
+
+public void afficheHeliZone(Graphics g) {
+    int taille = this.getWidth()/6;
+    g.setColor(Color.GRAY);
+    g.fillRect(0, 0, taille, taille);
+    g.setColor(Color.BLACK);
+    g.drawLine(0, 0, taille, taille);
+    g.drawLine(taille, 0, 0, taille);
+    g.drawLine(taille, 0, taille, taille);
+    g.drawLine(0, taille, taille, taille);
+}
 
     public void update() {
         super.repaint();

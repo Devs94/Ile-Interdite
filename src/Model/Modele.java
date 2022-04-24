@@ -26,6 +26,7 @@ public class Modele extends Observable {
             }
         }
         init();
+        initJoueur();
         ile = new Ile(this);
     }
 
@@ -181,7 +182,16 @@ public void AssecheZone(Joueur perso, Zone[][]carte){
     }
 }
 
-
+public void RecupArtefact(Joueur perso, Zone[][]carte){
+    if (carte[perso.y][perso.x].contientArtef()){
+        for(int i = 0; i < perso.getKeyTab().size(); i++){
+            if(perso.getKeyTab().get(i) == carte[perso.y][perso.x].getArtefact()){
+                perso.AjoutArtefact(carte[perso.y][perso.x].getArtefact());
+                carte[perso.y][perso.x].removeArtefact();
+            }
+        }
+    }
+}
 
 
 }

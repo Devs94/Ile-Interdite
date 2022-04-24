@@ -12,6 +12,7 @@ public class Joueur {
     public int x,y;
     private Direction direction;
     private ArrayList<Element> ListeArtefact;
+    private ArrayList<Element> ListeClés;
  
 
 
@@ -45,7 +46,13 @@ public class Joueur {
         this.ListeArtefact.add(Artefact);
     }
 
+    public void AjoutClé(Element Clé){
+        this.ListeClés.add(Clé);
+    }
 
+    public ArrayList<Element> getKeyTab(){
+        return this.ListeClés;
+    }
 
 
 }

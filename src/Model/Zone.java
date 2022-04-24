@@ -11,7 +11,7 @@ public class Zone extends Observable {
     private boolean Heliport = false;
     private Element cle;
     public int x, y;
-    public ArrayList<Joueur> listeJoueurs;
+    public ArrayList<Joueur> listeJoueurs = new ArrayList<Joueur>();
 
     public Zone(Modele modele, int x, int y) {
         this(modele, null, x, y);
@@ -80,7 +80,13 @@ public class Zone extends Observable {
         this.niveauEau = a;
     }
 
+    public Element getArtefact(){
+        return this.element;
+    }
 
+    public void removeArtefact(){
+        this.element = null;
+    }
 
     @Override
     public String toString() {

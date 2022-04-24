@@ -43,8 +43,8 @@ public class Modele extends Observable {
         ArrayList<Element> Type = new ArrayList<Element>(Arrays.asList(Element.values()));
         for(int i = 0; i < LARGEUR; i++){
             for(int j = 0; j < HAUTEUR; j++){
-                zones[i][j].x = i;
-                zones[i][j].y = j;
+                zones[i][j].x = j;
+                zones[i][j].y = i;
             }
         }
         zones[0][0].heliZone();
@@ -175,7 +175,11 @@ public void DeplaceJoueur( Joueur perso, Zone[][] carte, Direction direct){
     }
 }
 
-
+public void AssecheZone(Joueur perso, Zone[][]carte){
+    if (carte[perso.y][perso.x].getNiveauEau() == NiveauEau.Inondee){
+        carte[perso.y][perso.x].modifNiveauEeau(NiveauEau.Normale);
+    }
+}
 
 
 

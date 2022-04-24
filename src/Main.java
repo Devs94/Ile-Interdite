@@ -9,8 +9,10 @@ public class Main {
 
     public static void main(String[] args) {
        
-        Modele modeleJeu = new Modele();
-        Vue vueJeu = new Vue(modeleJeu);
+        EventQueue.invokeLater(() -> {
+            Modele modeleJeu = new Modele();
+            Vue vueJeu = new Vue(modeleJeu);
+        });
 
     }
 }

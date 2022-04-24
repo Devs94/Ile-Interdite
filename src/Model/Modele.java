@@ -7,14 +7,20 @@ import outils.Element;
 import outils.NiveauEau;
 import Model.Zone;
 import outils.Direction;
+import Model.Joueur;
 
 import java.util.Random;
+import java.awt.Color;
+import java.lang.Object;
+
 
 public class Modele extends Observable {
     public static final int LARGEUR = 7, HAUTEUR = 7;
     public static final int NbArtCle = 4;
+    private static final String Color = null;
     private Zone[][] zones;
     private Ile ile;
+    
 
  
 
@@ -131,19 +137,20 @@ public class Modele extends Observable {
 /**Place le joueur sur une zone non submergée de la carte */
 public void initJoueur(){
 int nBJoueur = 4;
-while(nBJoueur > 0){ 
-    for (int i = 1; i < LARGEUR; i++){
+
+    for (int i = 3; i < LARGEUR; i++){
         for(int j = 0; j < HAUTEUR; j++){
             if(nBJoueur > 0){ 
-                if (zones[i][j].caseSafe()){
+                if (zones[i][j].caseSafe() || zones[i][j].caseInond()){
                     Joueur a = new Joueur(zones[i][j]);
                     zones[i][j].listeJoueurs.add(a);           
+                    nBJoueur--;
                 }
-                nBJoueur --;
+                
             }
         }
     }
-}
+
 }
 
 public void DeplaceJoueur( Joueur perso, Zone[][] carte, Direction direct){
@@ -192,6 +199,37 @@ public void RecupArtefact(Joueur perso, Zone[][]carte){
         }
     }
 }
+
+public void PartieGagnee(){
+    if (zones[0][0].listeJoueurs.size() == 4){
+        int compte = 0;
+        for (int i = 0; i < zones.length; i++) {
+            for (int j = 0; j < zones[0].length; j++) {
+                for(int k = 0; k < zones[i][j].listeJoueurs.size(); k++){
+                    if(zones[i][j].listeJoueurs.get(k).nBArtefact() > 0){
+                        compte = compte + zones[i][j].listeJoueurs.get(k).nBArtefact();
+                    }
+                }
+            }
+        }if (compte == 4){
+            System.out.println("Vous avez gagné !");
+        }
+    } System.out.println("Vous n'avez pas encore réuni toutes les conditions de victoire...");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

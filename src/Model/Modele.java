@@ -20,6 +20,9 @@ public class Modele extends Observable {
     private static final String Color = null;
     private Zone[][] zones;
     private Ile ile;
+    private Joueur tour;
+    private int numJoueur = 0;
+    private ArrayList<Joueur> ListePlayers = new ArrayList<Joueur>();
     
 
  
@@ -218,9 +221,24 @@ public void PartieGagnee(){
 }
 
 
+public void recupJoueur(){
+ArrayList<Joueur> a = new ArrayList<Joueur>();
+    for (int i = 0; i < zones.length; i++) {
+        for (int j = 0; j < zones[0].length; j++) {
+            if(zones[i][j].listeJoueurs.size() > 0){
+                for(int k = 0; k < zones[i][j].listeJoueurs.size(); k++){
+                    ListePlayers.add(zones[i][j].listeJoueurs.get(k));
+                }
+            }
+        }
+    } tour = ListePlayers.get(numJoueur);
+}
 
-
-
+public void tourJoueur(){
+    numJoueur++;
+    numJoueur = numJoueur % 4;
+    tour = ListePlayers.get(numJoueur);
+}
 
 
 

@@ -55,6 +55,10 @@ public class Zone extends Observable {
         Heliport = true;
     }
 
+    public boolean isHeliZone() {
+        return Heliport;
+    }
+
     public boolean caseSafe(){
         if(NiveauEau.Submergee == niveauEau){
             return false;

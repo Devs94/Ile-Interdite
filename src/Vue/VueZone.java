@@ -35,20 +35,46 @@ public class VueZone extends JPanel implements Observer {
             default:
                 break;
         }
+        if (this.zone.isHeliZone()) afficheHeliZone(g);
+        // afficheJoueur(g, Color.GREEN);
     }
 
-    public void afficheInondee(Graphics g) {
+    private void afficheInondee(Graphics g) {
         g.setColor(EAU);
         int rectWidth = this.getWidth()/2, rectHeight = this.getHeight()/2;
         g.fillRect((this.getWidth()-rectWidth)/2, (this.getHeight()-rectHeight)/2, rectWidth, rectHeight);
     }
     
 
-    public void afficheSubmergee(Graphics g) {
+    private void afficheSubmergee(Graphics g) {
         g.setColor(EAU);
         int rectWidth = this.getWidth()-20, rectHeight = this.getHeight()-20;
         g.fillRect((this.getWidth()-rectWidth)/2, (this.getHeight()-rectHeight)/2, rectWidth, rectHeight);
     }
+
+    private void afficheHeliZone(Graphics g) {
+        int taille = this.getWidth()/6;
+        g.setColor(Color.GRAY);
+        g.fillRect(0, 0, taille, taille);
+        g.setColor(Color.BLACK);
+        g.drawLine(0, 0, taille, taille);
+        g.drawLine(taille, 0, 0, taille);
+        g.drawLine(taille, 0, taille, taille);
+        g.drawLine(0, taille, taille, taille);
+    }
+
+    private void afficheJoueur(Graphics g, Color color) {
+        afficheJoueur(g, color, 10, 10);
+    }
+
+    private void afficheJoueur(Graphics g, Color color, int x, int y) {
+        // On dessine la tête => cercle
+        int tailleTete = this.getWidth()/20;
+        g.setColor(color);
+        g.fillOval(x, y, x+tailleTete, y+tailleTete);
+    }
+
+    
 
     public void update() {
         super.repaint();

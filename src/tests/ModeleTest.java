@@ -50,4 +50,16 @@ public class ModeleTest {
         }
         assertEquals(compte, 4);
     }
+
+    @Test
+    public void compteJoueurs() {
+        int compte = 0;
+        Zone[][] zones = mTest.getGrilleZones();
+        for (int i = 0; i < zones.length; i++) {
+            for (int j = 0; j < zones[0].length; j++) {
+                compte += zones[i][j].listeJoueurs.size();
+            }
+        }
+        assertEquals(4, compte);
+    }
 }

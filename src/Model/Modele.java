@@ -65,9 +65,9 @@ public class Modele extends Observable {
                 double a = Math.random();
                 double b = Math.random();
                 double c = Math.random();
-                if (a < 0.4){
+                if (a < 0.5){
                     zones[i][j].zoneType(NiveauEau.Normale);
-                    if( b <= 0.3 & nBArt >= 0 ){
+                    if( b <= 0.2 & nBArt >= 0 ){
                         zones[i][j].addArtefact(Type.get(nBArt));
                         nBArt--;
                     }
@@ -78,9 +78,9 @@ public class Modele extends Observable {
                         }
                     }
                 }
-                else if (a < 0.7 & a >= 0.4 ){
+                else if (a < 0.8 & a >= 0.5 ){
                     zones[i][j].zoneType(NiveauEau.Inondee);
-                    if( b < 0.3 & nBArt >= 0){
+                    if( b < 0.2 & nBArt >= 0){
                           zones[i][j].addArtefact(Type.get(nBArt));
                         nBArt--;
                     }
@@ -91,7 +91,7 @@ public class Modele extends Observable {
                 }
             }
         }
-                else if (a > 0.7){
+                else if (a > 0.8){
                     zones[i][j].zoneType(NiveauEau.Submergee);
                 }
                 }
@@ -221,6 +221,20 @@ public void PartieGagnee(){
 }
 
 
+public boolean PartiePerdue(){
+    if (zones[0][0].getNiveauEau() == NiveauEau.Submergee){
+        return true;
+    }
+    for (int i = 0; i < ListePlayers.size(); i++){
+        if(zones[ListePlayers.get(i).y][ListePlayers.get(i).x].getNiveauEau() == NiveauEau.Submergee){
+            return true;
+        }
+    } return false;
+}
+
+
+
+
 public void recupJoueur(){
 ArrayList<Joueur> a = new ArrayList<Joueur>();
     for (int i = 0; i < zones.length; i++) {
@@ -241,7 +255,9 @@ public void tourJoueur(){
 }
 
 
-
+public Joueur tourget(){
+    return tour;
+}
 
 
 

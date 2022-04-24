@@ -43,8 +43,8 @@ public class Modele extends Observable {
         ArrayList<Element> Type = new ArrayList<Element>(Arrays.asList(Element.values()));
         for(int i = 0; i < LARGEUR; i++){
             for(int j = 0; j < HAUTEUR; j++){
-                zones[i][j].x = i;
-                zones[i][j].y = j;
+                zones[i][j].x = j;
+                zones[i][j].y = i;
             }
         }
         zones[0][0].heliZone();
@@ -95,34 +95,37 @@ public class Modele extends Observable {
 
 
 
-public void  EndtourInondation(){
+        public void  EndtourInondation(){
 
-     int nBInond = 3;
-     Random rand = new Random();
-     int upperbound = LARGEUR ;
-
-    while ( nBInond > 0){
-        int randW = rand.nextInt(upperbound);
-        int randH = rand.nextInt(upperbound);
-
-        if (zones[randW][randH].caseSafe()) {
-            if (zones[randW][randH].caseSafe()) {
-                zones[randW][randH].modifNiveauEeau(NiveauEau.Inondee);
-            }
-        }
-            else{
-                zones[randW][randH].modifNiveauEeau(NiveauEau.Submergee);
-            }
-        nBInond--;
-    }
-    notifyObservers();
-    for (int i = 0; i < zones.length; i++) {
-        for (int j = 0; j < zones[0].length; j++) {
-            zones[i][j].notifyObservers();
-        }
-    }
-    
-}
+            int nBInond = 3;
+            Random rand = new Random();
+            int upperbound = LARGEUR ;
+       
+           while ( nBInond > 0){
+               int randW = rand.nextInt(upperbound);
+               int randH = rand.nextInt(upperbound);
+       
+               
+                   if (zones[randW][randH].caseSafe()) {
+                       zones[randW][randH].modifNiveauEeau(NiveauEau.Inondee);
+                       nBInond--;
+                   }
+               
+                   else if (zones[randW][randH].caseInond()){ 
+                       zones[randW][randH].modifNiveauEeau(NiveauEau.Submergee);
+                       nBInond--;
+                   }
+               
+           }
+           notifyObservers();
+           for (int i = 0; i < zones.length; i++) {
+               for (int j = 0; j < zones[0].length; j++) {
+                   zones[i][j].notifyObservers();
+               }
+           }
+           
+       }
+       
 
 /**Place le joueur sur une zone non submergée de la carte */
 public void initJoueur(){
@@ -172,11 +175,11 @@ public void DeplaceJoueur( Joueur perso, Zone[][] carte, Direction direct){
     }
 }
 
-
-
-
-
-
+public void AssecheZone(Joueur perso, Zone[][]carte){
+    if (carte[perso.y][perso.x].getNiveauEau() == NiveauEau.Inondee){
+        carte[perso.y][perso.x].modifNiveauEeau(NiveauEau.Normale);
+    }
+}
 
 
 

@@ -236,6 +236,7 @@ ArrayList<Joueur> a = new ArrayList<Joueur>();
 
 public void tourJoueur(){
     numJoueur++;
+    numJoueur = numJoueur % 4;
     tour = ListePlayers.get(numJoueur);
 }
 

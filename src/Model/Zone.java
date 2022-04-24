@@ -6,7 +6,8 @@ import Observing.Observable;
 import outils.*;
 
 public class Zone extends Observable {
-    private NiveauEau niveauEau = NiveauEau.Normale;
+    public static final String ListeArtefact = null;
+	private NiveauEau niveauEau = NiveauEau.Normale;
     private Element element; // null par défaut
     private boolean Heliport = false;
     private Element cle;

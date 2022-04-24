@@ -17,8 +17,13 @@ class VueCommandes extends JPanel{
         JButton boutonAvance = new JButton("fin de tour");
         this.add(boutonAvance);
 
+        JButton boutonAvance2 = new JButton("Gagnée ?");
+
         Controleur ctrl = new Controleur(modele);
         boutonAvance.addActionListener(ctrl);
+
+        Controleur ctrl2 = new Controleur(modele);
+        boutonAvance2.addActionListener(ctrl2);
 
     }
 }

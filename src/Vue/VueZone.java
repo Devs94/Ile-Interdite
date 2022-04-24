@@ -11,6 +11,7 @@ import outils.NiveauEau;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import outils.Element;
 
 public class VueZone extends JPanel implements Observer {
     public static final Color EAU = new Color(84,121,255);
@@ -91,7 +92,7 @@ public class VueZone extends JPanel implements Observer {
 
     private void afficheAllArtef(Graphics g) {
         if (modele.getZone(x, y).contientArtef()) {
-            switch (modele.getZone(x, y).getArtef()) {
+            switch (modele.getZone(x, y).getArtefact()) {
                 case Air:
                     afficheArtef(
                         g, new Color(133, 247, 232),

@@ -103,7 +103,7 @@ public class Modele extends Observable {
 
 
         public void  EndtourInondation(){
-
+            
             int nBInond = 3;
             Random rand = new Random();
             int upperbound = LARGEUR ;
